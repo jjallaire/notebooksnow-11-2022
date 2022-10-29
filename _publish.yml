@@ -1,0 +1,4 @@
+- source: notebooksnow-quarto.qmd
+  quarto-pub:
+    - id: a667d411-0371-4177-a9f2-7d5c523d0777
+      url: 'https://quartopub.com/sites/jjallaire/notebooksnow-intro-to-quarto'
