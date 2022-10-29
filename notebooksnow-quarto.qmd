@@ -1,0 +1,218 @@
+---
+title: "Notebooks Now:<br/>Introduction to Quarto"
+date: "Nov. 4, 2022"
+author: "J.J. Allaire"
+institute: "Posit, PBC"
+format: 
+  revealjs:
+    width: 1050
+    height: 760
+    slide-number: true
+    css: styles.css  
+    pdf-separate-fragments: true
+
+---
+
+## What is Quarto?
+
+Quarto is an open-source scientific and technical publishing system that builds on standard markdown with features essential for scientific communication.
+
+-   Computations: Python, R, Julia, Observable JS
+-   Markdown: [Pandoc](https://pandoc.org) w/ many enhancements
+-   Output: Documents, presentations, websites, books, blogs
+
+Literate programming system in the tradition of Org-mode, Sweave, Weave.jl, R Markdown, iPyPublish, Jupyter Book, etc.
+
+## Origins
+
+-   Open source project sponsored by Posit, PBC (formerly RStudio, PBC)
+-   10 years of experience with R Markdown (a similar system that was R-specific) convinced us that the core ideas were sound.
+-   The number of languages and runtimes used for scientific discourse is very broad.
+-   Quarto is a ground-up re-imagining of R Markdown that is fundamentally multi-language and multi-engine.
+
+## Goal: Computational Documents
+
+::: columns
+::: {.column width="60%"}
+![](images/nature-reproducibility.png)
+:::
+
+::: {.column width="40%"}
+-   Documents that incorporate the source code required for their production
+-   Notebook and plain text flavors
+-   Automation and reproducibility
+:::
+:::
+
+## Computational Engines
+
+Quarto has a pluggable computation system that allows for compatibility with today's standards along with the ability to evolve to work with new standards:
+
+-   Knitr
+-   Jupyter
+-   Observable JS
+-   Others possible...
+
+## Knitr Engine {.nostretch}
+
+![](images/rstudio-qmd-how-it-works.png){width=90%}
+
+For R, Quarto still uses Knitr under the hood. Consequently, ***the vast majority of existing Rmd files*** can be rendered unmodified.
+
+
+## Knitr Engine
+
+![](images/knitr-engine.png)
+
+## Jupyter Engine --- ipynb {.nostretch}
+
+![](images/qmd-how-it-works.png){width=90%}
+
+Use with any language that has a Jupyter kernel (Python, Julia, R, many others....). Supports two input file formats:
+
+-   Traditional notebooks (`.ipynb`)
+-   Markdown w/ chunks (`.qmd`)
+
+Hello Jupyter: <https://quarto.org/#hello-quarto>
+
+## Jupyter Engine: ipynb {.nostretch}
+
+You can also render Jupyter notebooks (`.ipynb` files) directly. Note that in this case no execution occurs by default:
+
+![](images/ipynb-how-it-works.png)
+
+
+
+## Goal: Scientific Markdown
+
+![](images/scientific-markdown.png)
+
+## Markdown Extensions 
+
+-   Citations
+-   Cross references
+-   LaTeX math
+-   Diagrams
+-   Figure panels
+-   Callouts
+-   Advanced page layout
+
+
+## Goal: Single Source Publishing
+
+<https://coko.foundation/articles/single-source-publishing.html>
+
+![](images/single-source-publishing.jpg)
+
+## Publishing Formats
+
+-   Documents (HTML, PDF, Word, ODT, Ipynb, etc.)
+
+-   Presentations (HTML, PDF, PowerPoint, etc.)
+
+-   Websites & Blogs (Quarto, Hugo, Docusaurus, etc.)
+
+-   Books (HTML, PDF, Word, ePub, Asciidoc, etc.)
+
+-   Journal Articles (LaTeX, HTML, Ipynb, etc.)
+
+
+## Notebooks and Quarto
+
+Ways you might use Jupyter notebooks with Quarto:
+
+- **Authoring**---Using notebooks as an end-to-end authoring tool for a manuscript.
+
+- **Computations**---Using notebooks as source of reproducible computations for a manuscript.
+
+- **Publishing**---Providing interactive supplements to manuscripts published in print or on the web.
+
+
+
+## Notebook Authoring
+
+Author the entire manuscript within a notebook editor like Jupyter Lab (side by side preview for HTML or PDF output):
+
+
+![](images/jupyterlab-preview.png){width="80%" fig-align="center"}
+
+
+
+## Notebook Computations
+
+::: columns
+
+::: {.column width="55%"}
+- Notebook as a computational medium only (as opposed to a medium for both prose and computation)
+
+- Staged workflow where computations are  _included_ within documents for publication (retaining ability to re-execute computations for reproducibility)
+
+:::
+
+::: {.column width="45%"}
+![](images/jupyter-computations.png)
+:::
+
+:::
+
+
+## Notebook Computations (cont.) 
+
+::: columns
+
+::: {.column width=60%}
+Markdown document includes figure from notebook:
+
+````{.markdown code-line-numbers="|6"}
+For a demonstration of a line plot on a 
+polar axis, see @fig-polar.
+
+::: {#fig-polar}
+
+{{< include notebook.ipynb#fig-polar >}}
+
+A line plot on a polar axis.
+:::
+
+````
+:::
+
+
+::: {.column width=40%}
+![](images/jupyter-output.png){.fragment}
+:::
+
+:::
+
+
+
+## Notebook Publishing
+
+Create notebook output _alongside_ traditional formats (LaTeX, HTML, etc.). For example, here is metadata for an American Chemical Society article that produces multiple outputs:
+
+```{.yaml code-line-numbers="|2-7|8-10|11-13"}
+format:
+  acs-pdf:
+    keep-tex: true
+    journal:
+      id: jacsat 
+      layout: traditional 
+      abbreviations: IR,NMR,UV
+  acs-html: 
+    fig-width: 6
+    fig-height: 4
+  ipynb: 
+    fig-width: 7
+    fig-height: 5
+```
+
+
+## Learning More
+
+#### Slides: <https://jjallaire.quarto.pub/notebooksnow-quarto/> {.top-pad .bottom-pad}
+
+-   Getting started: <https://quarto.org/>
+
+-   User guide: <https://quarto.org/docs/guide/>
+
+-   Awesome Quarto: <https://github.com/mcanouil/awesome-quarto>
